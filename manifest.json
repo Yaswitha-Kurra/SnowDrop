@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Tweet Tipper",
+  "version": "1.6",
+  "description": "Tip tweets on Twitter/X using AVAX",
+  "permissions": ["scripting", "activeTab", "storage", "webNavigation"],
+  "host_permissions": ["https://twitter.com/*", "https://x.com/*", "https://snowtrace.io/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*", "https://x.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["injected.js"],
+      "matches": ["https://twitter.com/*", "https://x.com/*"]
+    }
+  ],
+  "action": {
+    "default_icon": "icon.png"
+  }
+}
