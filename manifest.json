@@ -3,25 +3,40 @@
   "name": "Tweet Tipper",
   "version": "1.6",
   "description": "Tip tweets on Twitter/X using AVAX",
-  "permissions": ["scripting", "activeTab", "storage", "webNavigation"],
-  "host_permissions": ["https://twitter.com/*", "https://x.com/*", "https://snowtrace.io/*"],
+  "permissions": ["scripting", "activeTab", "storage","tabs", "webNavigation"],
+  "host_permissions": ["https://twitter.com/*", "https://x.com/*", "https://snowtrace.io/*", "http://localhost:5173/*", "http://localhost:5000/*","https://snowdrop-avax.vercel.app/*", "<all_urls>"],
   "content_scripts": [
     {
-      "matches": ["https://twitter.com/*", "https://x.com/*"],
+      "matches": [
+        "https://twitter.com/*",
+        "https://x.com/*",
+        "https://filly-accurate-lark.ngrok-free.app/*",
+        "https://snowdrop-avax.vercel.app/*",
+        "http://localhost:5173/*"
+      ],
       "js": ["content.js"],
       "run_at": "document_end"
     }
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "persistent": true
   },
   "web_accessible_resources": [
     {
-      "resources": ["injected.js"],
+      "resources": ["injected.js" , "connect.html", "connect.js", "images/snowdrop.png"],
       "matches": ["https://twitter.com/*", "https://x.com/*"]
     }
   ],
   "action": {
-    "default_icon": "icon.png"
-  }
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "externally_connectable": {
+  "matches": [
+    "http://localhost:5173/*",
+    "https://filly-accurate-lark.ngrok-free.app/*",
+    "https://snowdrop-avax.vercel.app/*"
+  ]
+}
 }

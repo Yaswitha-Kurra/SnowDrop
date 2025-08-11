@@ -1,19 +1,52 @@
-import { supabase } from './supabaseClient.js';
+document.addEventListener("DOMContentLoaded", () => {
+  const walletText = document.getElementById("walletAddressText");
+  const sessionInfo = document.getElementById("sessionInfo");
+  const depositBtn = document.getElementById("deposit-jar-btn");
+  const jarToggle = document.getElementById("jar-toggle");
 
-document.getElementById("connect-twitter-btn").addEventListener("click", () => {
-  const popup = window.open("http://localhost:5000/login", "_blank", "width=500,height=600");
+  // Read from chrome.storage
+  chrome.storage.local.get(["walletAddress", "twitterHandle"], (data) => {
+  const sessionInfo = document.getElementById("sessionInfo");
+  const loginBtn = document.getElementById("login-btn");
+  const depositBtn = document.getElementById("deposit-jar-btn");
 
-  window.addEventListener("message", async (event) => {
-    const twitterHandle = event.data.twitterHandle;
-    const wallet = localStorage.getItem("walletAddress");
+  if (data?.walletAddress && data?.twitterHandle) {
+    // ✅ Show session UI
+    sessionInfo.style.display = "block";
+    walletText.innerText = `${data.walletAddress.slice(0, 6)}...${data.walletAddress.slice(-4)}`;
+    depositBtn.disabled = false;
+  } else {
+    // ❌ No session → show Sign In button
+    loginBtn.style.display = "block";
+  }
+});
 
-    console.log("Twitter:", twitterHandle, "Wallet:", wallet);
 
-    const { data, error } = await supabase.from("users").upsert({
-      twitter_handle: twitterHandle,
-      wallet: wallet
-    });
+  // Set on toggle change
+jarToggle.addEventListener("change", () => {
+  const value = jarToggle.checked;
+  chrome.storage.local.set({ jarEnabled: value }, () => {
+    console.log("✅ Stored jarEnabled:", value);
+  });
+});
 
-    alert("Twitter connected: @" + twitterHandle);
+// Initialize toggle state from chrome.storage
+chrome.storage.local.get("jarEnabled", (data) => {
+  const stored = data?.jarEnabled === true;
+  jarToggle.checked = stored;
+});
+
+
+  // Deposit logic
+  depositBtn.addEventListener("click", () => {
+    const amount = prompt("Enter amount of AVAX to deposit:");
+    if (amount) {
+      chrome.runtime.sendMessage({ action: "depositToJar", amount });
+    }
+  });
+});
+document.getElementById("login-btn").addEventListener("click", () => {
+  chrome.tabs.create({
+    url: "https://snowdrop-avax.vercel.app/" // Replace with your actual domain
   });
 });

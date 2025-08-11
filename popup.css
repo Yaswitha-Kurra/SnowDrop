@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  padding: 12px;
+  width: 420px;
+  height: 620px;
+  background: #121212;
+  color: #f0f0f0;
+  font-family: 'Courier New', monospace;
+}
+
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+h2 {
+  font-size: 18px;
+  color: #ff4a4a;
+  text-shadow: 1px 1px #000;
+  margin-bottom: 10px;
+}
+
+.info-box {
+  font-size: 13px;
+  background: #220000;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #f8dada;
+  text-align: center;
+  width: 100%;
+}
+
+.tipper-button {
+  background: #ff4a4a;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.tipper-button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+.toggle-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 13px;
+}

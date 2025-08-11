@@ -1,14 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tweet Tipper</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(rgba(13, 127, 199, 0.1), rgba(13, 127, 199, 0.1)), url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%230d7fc7" fill-opacity="0.1" d="M0,128L48,138.7C96,149,192,171,288,181.3C384,192,480,192,576,186.7C672,181,768,171,864,170.7C960,171,1056,181,1152,176C1248,171,1344,149,1392,138.7L1440,128V320H1392C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320H0Z"%3E%3C/path%3E%3C/svg%3E');
+      color: #e6f0fa;
+      min-width: 300px;
+    }
+    .popup-container {
+      padding: 20px;
+      background: rgba(26, 26, 26, 0.8);
+      backdrop-filter: blur(12px);
+      border: 2px solid #b3e0ff;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(179, 224, 255, 0.3);
+      text-align: center;
+    }
+    .title {
+      font-size: 1.5rem;
+      color: #b3e0ff;
+      margin-bottom: 15px;
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+    }
+    .login-btn {
+      background: #0d7fc7;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #ffffff;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-decoration: none;
+      display: none;
+    }
+    .login-btn:hover {
+      background: #0b639d;
+    }
+    .session-info {
+      display: none;
+      margin-top: 10px;
+    }
+    .wallet-address {
+      font-size: 1rem;
+      color: #d1e8ff;
+    }
+    .jar-toggle {
+      margin-top: 15px;
+    }
+    .jar-toggle label {
+      color: #b3e0ff;
+      font-size: 0.9rem;
+    }
+    .jar-toggle input[type="checkbox"] {
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+  </style>
 </head>
 <body>
-  <h3>💸 Tweet Tipper</h3>
-  <button id="connect-twitter-btn">Connect Twitter</button>
-  <button id="connect-wallet-btn">Connect Wallet</button>
-  <p id="wallet-status"></p>
+  <div class="popup-container">
+    <div class="title">💧 SNOWDROP</div>
+    <button id="login-btn" class="login-btn">🔐 Sign in with X and Connect wallet</button>
+    <div id="sessionInfo" class="session-info">
+      <div class="wallet-address">🔐 Connected: <span id="walletAddressText"></span></div>
+      <div class="jar-toggle">
+        <label>
+          <input type="checkbox" id="jar-toggle"> Enable Jar Tipping
+        </label>
+      </div>
+    </div>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>
