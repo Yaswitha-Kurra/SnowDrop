@@ -319,7 +319,7 @@ window.addEventListener("message", (event) => {
   if (event.data?.type === "SEND_JAR_TIP") {
     const { twitterHandle, tweetId, senderWallet, amount } = event.data;
 
-    fetch("https://c865b9855a56.ngrok-free.app/api/tip", {
+    fetch("http://localhost:3000/api/tip", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ twitterHandle, amount, userAddress: senderWallet })
