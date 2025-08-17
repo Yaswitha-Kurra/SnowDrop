@@ -1,18 +1,40 @@
 {
   "manifest_version": 3,
-  "name": "Tweet Tipper",
+  "name": "SNOWDROP",
   "version": "1.6",
+<<<<<<< HEAD
   "description": "Tip tweets on Twitter/X using AVAX",
   "permissions": ["scripting", "activeTab", "storage","tabs", "webNavigation"],
   "host_permissions": ["https://twitter.com/*", "https://x.com/*", "https://snowtrace.io/*", "http://localhost:5173/*", "http://localhost:5000/*","https://snowdrop-avax.vercel.app/*", "<all_urls>"],
+=======
+  "description": "Tip tweets on Twitter/X using AVAX. Sign in happens on the SnowDrop Dashboard.",
+  "icons": {
+    "16": "images/snowdrop.png",
+    "48": "images/snowdrop.png",
+    "128": "images/snowdrop.png"},
+  "action": {
+    "default_icon": {
+      "16": "images/snowdrop.png",
+      "48": "images/snowdrop.png",
+      "128": "images/snowdrop.png"
+    },
+  "default_popup": "popup.html"
+  },
+  "permissions": ["scripting", "activeTab", "storage", "webNavigation"],
+  "host_permissions": ["https://twitter.com/*", "https://x.com/*", "https://snowtrace.io/*", "https://www.snowdrop.live/*"],
+>>>>>>> d234179 (working)
   "content_scripts": [
     {
       "matches": [
         "https://twitter.com/*",
         "https://x.com/*",
+<<<<<<< HEAD
         "https://filly-accurate-lark.ngrok-free.app/*",
         "https://snowdrop-avax.vercel.app/*",
         "http://localhost:5173/*"
+=======
+        "https://www.snowdrop.live/*"
+>>>>>>> d234179 (working)
       ],
       "js": ["content.js"],
       "run_at": "document_end"
@@ -28,6 +50,7 @@
       "matches": ["https://twitter.com/*", "https://x.com/*"]
     }
   ],
+<<<<<<< HEAD
   "action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
@@ -37,6 +60,11 @@
     "http://localhost:5173/*",
     "https://filly-accurate-lark.ngrok-free.app/*",
     "https://snowdrop-avax.vercel.app/*"
+=======
+  "externally_connectable": {
+  "matches": [
+    "https://www.snowdrop.live/*"
+>>>>>>> d234179 (working)
   ]
 }
 }

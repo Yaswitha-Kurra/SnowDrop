@@ -55,7 +55,11 @@ window.addEventListener("message", async (event) => {
     // ✅ JAR tipping via backend (AVAX only)
     if (jarEnabled && token === "AVAX") {
       try {
+<<<<<<< HEAD
         const response = await fetch("http://localhost:3000/api/tip", {
+=======
+        const response = await fetch("https://filly-accurate-lark.ngrok-free.app/api/tip", {
+>>>>>>> d234179 (working)
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

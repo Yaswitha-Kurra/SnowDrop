@@ -47,6 +47,10 @@ chrome.storage.local.get("jarEnabled", (data) => {
 });
 document.getElementById("login-btn").addEventListener("click", () => {
   chrome.tabs.create({
+<<<<<<< HEAD
     url: "https://snowdrop-avax.vercel.app/" // Replace with your actual domain
+=======
+    url: "https://www.snowdrop.live/" // Replace with your actual domain
+>>>>>>> d234179 (working)
   });
 });
